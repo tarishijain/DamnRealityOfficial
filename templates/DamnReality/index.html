@@ -1,0 +1,81 @@
+{% extends "main_template.html" %} 
+{% block title %}DAMN REALITY{% endblock %} 
+{% block content %} 
+
+{% load static %}
+<img class="cover-img" src="{% static 'DamnReality/DRcoverimg1.jpg' %}" class="responsive" />
+
+<div id="category-container">
+    <div class="w3-container w3-padding-32" id="category"></div>
+    <div class="heading"> Shop By Category </div>    
+        
+    {% for cat in categories %}
+    <a href = "/category/{{cat.name}}"><div class="category-c"><img src="/media/{{cat.cat_image}}" width="180" height="180" /><div class="category-name">{{cat.name}}</div></div></a>    
+    {% endfor %}
+
+</div>
+
+<div class="center margin-gap">
+    <div class="heading">BEST SELLER</div>
+    <div class="sub-heading">TOP PRODUCTS OF THE WEEK</div>
+</div>
+
+<div class="center margin-gap">
+
+    {% for prod in products %}
+
+    <a href = "/product/{{prod.id}}">
+    <div class="product-c">
+        <img src="/media/{{prod.product_image}}" width="300" height="300"  />
+       
+        <div class="product-details">
+            <div class="product-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                </div>
+            <div class="product-name">{{prod.name}}</div>
+            <div class="product-price"><span class="fa fa-inr"></span> {{prod.price}}</div>
+        </div>
+    </div>
+    </a>
+
+    {% endfor %}
+ </div>
+
+    <div class="center margin-gap">
+        <div class="heading">What's New</div>
+        <div class="sub-heading">DAMN REALITY PREMIUM</div>
+    </div>
+
+    <div id="category-container">
+
+        {% for prod in products %}
+        
+        <a href = "/product/{{prod.id}}">
+            <div class="product-c">
+                <img src="/media/{{prod.product_image}}" width="300" height="300"  />
+               
+                <div class="product-details">
+                    <div class="product-rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        </div>
+                    <div class="product-name">{{prod.name}}</div>
+                    <div class="product-price"><span class="fa fa-inr"></span> {{prod.price}}</div>
+                </div>
+            </div>
+            </a>
+        {% endfor %}
+
+        {% for u in users %}
+        <div>{{u.email}}</div>
+        {% endfor %}
+    </div>
+
+{% endblock %} 
